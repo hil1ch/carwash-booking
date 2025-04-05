@@ -1,4 +1,4 @@
-import { Button } from "../../shared/ui/Button";
+import { Button } from "../shared/ui/Button";
 
 export function StartPage() {
   const buttonStyle =
@@ -13,10 +13,10 @@ export function StartPage() {
         Быстрая запись — безупречный блеск!
       </p>
       <div className="flex gap-8 justify-center">
-        <Button className={buttonStyle} disabled={false}>
+        <Button type="button" className={buttonStyle} disabled={false}>
           Для клиентов
         </Button>
-        <Button className={buttonStyle} disabled={false}>
+        <Button type="button" className={buttonStyle} disabled={false}>
           Для владельцев
         </Button>
       </div>

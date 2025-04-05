@@ -1,10 +1,8 @@
-import { StartPage } from '../pages/StartPage/StartPage'
-import './App.css'
+import { ClientSignInPage } from "../pages/ClientSignInPage";
+import "./App.css";
 
 function App() {
-  return (
-    <StartPage />
-  )
+  return <ClientSignInPage />;
 }
 
-export default App
+export default App;
