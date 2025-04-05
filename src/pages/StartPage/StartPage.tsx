@@ -1,4 +1,5 @@
 import styles from "./StartPage.module.css";
+import { Button } from "../../shared/ui/Button";
 
 export function StartPage() {
   return (
@@ -8,8 +9,8 @@ export function StartPage() {
         </h1>
         <p className={styles.slogan}>Быстрая запись — безупречный блеск!</p>
         <div className={styles.navigationButtons}>
-          <button className={styles.navigationButton}>Для клиентов</button>
-          <button className={styles.navigationButton}>Для владельцев</button>
+          <Button disabled={false}>Для клиентов</Button>
+          <Button disabled={false}>Для владельцев</Button>
         </div>
       </div>
   );
