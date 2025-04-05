@@ -1,12 +1,13 @@
 interface IButton {
-  children: string;
-  disabled: boolean;
-  onClick?: () => void;
+   className: string
+   children: string;
+   disabled: boolean;
+   onClick?: () => void;
 }
 
-export function Button({ onClick, children, disabled = false }: IButton) {
+export function Button({ className, onClick, children, disabled = false }: IButton) {
   return (
-    <button className="" onClick={onClick} disabled={disabled}>
+    <button className={className} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );
