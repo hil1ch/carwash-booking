@@ -2,9 +2,6 @@ import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 
 export function ClientSignInPage() {
-  const inputClass =
-    "mt-[9px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[18px] placeholder:font-medium text-[#CCCCCC]";
-
   return (
     <div className="text-center flex flex-col items-center justify-center min-h-screen">
       <form>
@@ -14,15 +11,13 @@ export function ClientSignInPage() {
             Почта
           </label>
           <Input
-            className={inputClass}
             type="email"
             placeholder="Введите вашу почту"
           ></Input>
-          <label className="mt-[20px] text-[18px] font-medium text-[#CCCCCC] text-start">
+          <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Пароль
           </label>
           <Input
-            className={inputClass}
             type="password"
             placeholder="Введите пароль"
           ></Input>
