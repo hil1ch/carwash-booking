@@ -1,6 +1,6 @@
 interface IInput {
   type: string;
-  placeholder: string;
+  placeholder?: string;
   ref?: React.Ref<HTMLInputElement> | undefined;
   value?: string;
 }
@@ -13,6 +13,7 @@ export function Input({ type, placeholder, value, ref }: IInput) {
       placeholder={placeholder}
       value={value}
       ref={ref}
+      required
     />
   );
 }

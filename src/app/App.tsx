@@ -1,8 +1,8 @@
-import { PartnerSignInPage } from "../pages/PartnerSignInPage";
+import { PartnerSignUpPage } from "../pages/PartnerSignUpPage";
 import "./App.css";
 
 function App() {
-  return <PartnerSignInPage />;
+  return <PartnerSignUpPage />;
 }
 
 export default App;
