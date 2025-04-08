@@ -1,8 +1,8 @@
-import { PartnerSignUpPage } from "../pages/PartnerSignUpPage";
+import { Header } from "../shared/ui/Header";
 import "./App.css";
 
 function App() {
-  return <PartnerSignUpPage />;
+  return <Header />;
 }
 
 export default App;
