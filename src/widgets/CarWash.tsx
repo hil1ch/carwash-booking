@@ -7,7 +7,7 @@ interface ICarWash {
 
 export function CarWash({ name, address, time, image }: ICarWash) {
   return (
-    <div className="w-full flex border border-[#DDDDDD] rounded-[10px] cursor-pointer shadow-[0_1px_7px_0_rgba(0,0,0,0.2)]">
+    <div className="w-full flex border border-[#DDDDDD] rounded-[10px] cursor-pointer shadow-[0_1px_7px_0_rgba(0,0,0,0.2)] mt-[17px]">
       <img className="mr-[19px] w-[130px]" src={image}></img>
       <div className="flex flex-col justify-between pt-[15px] pb-[15px] w-full pr-[19px]">
         <h3 className="text-[18px] font-medium">{name}</h3>
