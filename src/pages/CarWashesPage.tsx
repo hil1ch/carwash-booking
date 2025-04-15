@@ -2,7 +2,7 @@ import { Header } from "../shared/ui/Header";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 // import { Map } from "../shared/ui/Map";
-import { CarWash } from "../widgets/CarWash";
+import { CarWashesList } from "../widgets/CarWashesList";
 
 export function CarWashesPage() {
   return (
@@ -16,26 +16,7 @@ export function CarWashesPage() {
             </h2>
             <Search placeholder="Найти автомойку" />
           </div>
-          <ul className="mt-[25px]">
-            <CarWash
-              name="Название автомойки"
-              address="Мира, 19"
-              time="9:00 - 20:00"
-              image="src\assets\carwash.png"
-            />
-            <CarWash
-              name="Название автомойки"
-              address="Мира, 19"
-              time="9:00 - 20:00"
-              image="src\assets\carwash.png"
-            />
-            <CarWash
-              name="Название автомойки"
-              address="Мира, 19"
-              time="9:00 - 20:00"
-              image="src\assets\carwash.png"
-            />
-          </ul>
+          <CarWashesList />
         </div>
         {/* <Map defaultState={{ center: [55.75, 37.57], zoom: 9 }}/> */}
       </div>

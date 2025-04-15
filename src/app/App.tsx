@@ -1,8 +1,8 @@
-import { CarWashesPage } from "../pages/CarWashesPage";
+import { ServicesPage } from "../pages/ServicesPage";
 import "./App.css";
 
 function App() {
-  return <CarWashesPage />
+  return <ServicesPage />
 }
 
 export default App;

@@ -1,4 +1,4 @@
-interface ICarWash {
+export interface ICarWash {
   name: string;
   address: string;
   time: string;
