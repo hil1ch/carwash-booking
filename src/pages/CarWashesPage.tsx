@@ -16,26 +16,28 @@ export function CarWashesPage() {
             </h2>
             <Search placeholder="Найти автомойку" />
           </div>
-          <CarWash
-            name="Название автомойки"
-            address="Мира, 19"
-            time="9:00 - 20:00"
-            image="src\assets\carwash.png"
-          />
-          <CarWash
-            name="Название автомойки"
-            address="Мира, 19"
-            time="9:00 - 20:00"
-            image="src\assets\carwash.png"
-          />
-          <CarWash
-            name="Название автомойки"
-            address="Мира, 19"
-            time="9:00 - 20:00"
-            image="src\assets\carwash.png"
-          />
+          <ul className="mt-[25px]">
+            <CarWash
+              name="Название автомойки"
+              address="Мира, 19"
+              time="9:00 - 20:00"
+              image="src\assets\carwash.png"
+            />
+            <CarWash
+              name="Название автомойки"
+              address="Мира, 19"
+              time="9:00 - 20:00"
+              image="src\assets\carwash.png"
+            />
+            <CarWash
+              name="Название автомойки"
+              address="Мира, 19"
+              time="9:00 - 20:00"
+              image="src\assets\carwash.png"
+            />
+          </ul>
         </div>
-        {/* <Map /> */}
+        {/* <Map defaultState={{ center: [55.75, 37.57], zoom: 9 }}/> */}
       </div>
       <Button
         type="button"
