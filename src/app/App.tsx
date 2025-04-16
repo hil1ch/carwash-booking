@@ -1,8 +1,8 @@
-import { DatePage } from "../pages/DatePage";
+import { BookedModal } from "../widgets/BookedModal";
 import "./App.css";
 
 function App() {
-  return <DatePage />
+  return <BookedModal />
 }
 
 export default App;
