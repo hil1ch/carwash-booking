@@ -1,8 +1,8 @@
-import { ServicesPage } from "../pages/ServicesPage";
+import { DatePage } from "../pages/DatePage";
 import "./App.css";
 
 function App() {
-  return <ServicesPage />
+  return <DatePage />
 }
 
 export default App;

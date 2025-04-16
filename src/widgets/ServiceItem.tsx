@@ -1,4 +1,4 @@
-interface IService {
+export interface IService {
   name: string;
   description: string;
   time: string;
