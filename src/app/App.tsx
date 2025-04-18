@@ -1,8 +1,7 @@
-import { BookedModal } from "../widgets/BookedModal";
-import "./App.css";
+import { ProfilePage } from "../pages/ProfilePage";
 
 function App() {
-  return <BookedModal />
+  return <ProfilePage />
 }
 
 export default App;
