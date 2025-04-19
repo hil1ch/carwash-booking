@@ -1,5 +1,6 @@
 import { Tabs, ConfigProvider } from "antd";
 import type { TabsProps } from "antd";
+import { ProfilePersonalData } from "./ProfilePersonalData";
 
 const onChange = (key: string) => {
   console.log(key);
@@ -8,8 +9,8 @@ const onChange = (key: string) => {
 const items: TabsProps["items"] = [
   {
     key: "1",
-    label: "Личный кабинет",
-    children: "Content of Tab Pane 1",
+    label: "Личные данные",
+    children: <ProfilePersonalData />,
   },
   {
     key: "2",
@@ -25,11 +26,17 @@ const ProfileNavigation: React.FC = () => (
         Tabs: {
           fontSize: 16,
           fontFamily: "Montserrat, sans-serif",
+          horizontalItemPadding: '0 32px'
         },
       },
     }}
   >
-    <Tabs tabBarGutter={64} defaultActiveKey="1" items={items} onChange={onChange} />
+    <Tabs
+      tabBarGutter={730}
+      defaultActiveKey="1"
+      items={items}
+      onChange={onChange}
+    />
   </ConfigProvider>
 );
 

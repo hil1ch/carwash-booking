@@ -10,11 +10,19 @@ export function PartnerSignInPage() {
           <label className="text-[18px] font-medium text-[#CCCCCC] text-start">
             Логин
           </label>
-          <Input type="text" placeholder="Введите ваш логин"></Input>
+          <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
+            type="text"
+            placeholder="Введите ваш логин"
+          ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Пароль
           </label>
-          <Input type="password" placeholder="Введите пароль"></Input>
+          <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
+            type="password"
+            placeholder="Введите пароль"
+          ></Input>
           <a className="text-end mt-[5px] text-[14px]" href="#">
             Забыли пароль?
           </a>

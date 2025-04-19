@@ -21,6 +21,7 @@ export function PartnerSignUpPage() {
                 Имя
               </label>
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите ваше имя"
               ></Input>
@@ -30,6 +31,7 @@ export function PartnerSignUpPage() {
                 Фамилия
               </label>
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите вашу фамилию"
               ></Input>
@@ -39,6 +41,7 @@ export function PartnerSignUpPage() {
             Почта
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="email"
             placeholder="Введите вашу почту"
           ></Input>
@@ -46,6 +49,7 @@ export function PartnerSignUpPage() {
             Телефон
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="tel"
             placeholder="+7 (___) ___-__-__" ref={inputRef}
           ></Input>
@@ -53,6 +57,7 @@ export function PartnerSignUpPage() {
             Адрес автомойки
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="text"
             placeholder="Например: г. Еактеринбург, ул. Мира, д. 19"
           ></Input>
@@ -60,6 +65,7 @@ export function PartnerSignUpPage() {
             Количество окон
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="number"
             placeholder="Например: 5"
           ></Input>
@@ -69,12 +75,14 @@ export function PartnerSignUpPage() {
           <div className="flex justify-between items-center">
             <div className="flex flex-col w-[270px]">
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="time"
               ></Input>
             </div>
             <span>—</span>
             <div className="flex flex-col w-[270px]">
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="time"
               ></Input>
             </div>

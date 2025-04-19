@@ -21,6 +21,7 @@ export function ClientSignUpPage() {
                 Имя
               </label>
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите ваше имя"
               ></Input>
@@ -30,6 +31,7 @@ export function ClientSignUpPage() {
                 Фамилия
               </label>
               <Input
+                className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите вашу фамилию"
               ></Input>
@@ -39,6 +41,7 @@ export function ClientSignUpPage() {
             Почта
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="email"
             placeholder="Введите вашу почту"
           ></Input>
@@ -46,6 +49,7 @@ export function ClientSignUpPage() {
             Телефон
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="text"
             placeholder="+7 (___) ___-__-__" ref={inputRef}
           ></Input>
@@ -53,6 +57,7 @@ export function ClientSignUpPage() {
             Пароль
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="password"
             placeholder="Введите пароль"
           ></Input>
@@ -60,6 +65,7 @@ export function ClientSignUpPage() {
             Подтвердите пароль
           </label>
           <Input
+            className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="password"
             placeholder="Введите пароль еще раз"
           ></Input>
