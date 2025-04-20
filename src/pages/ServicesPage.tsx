@@ -7,7 +7,7 @@ import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 export function ServicesPage() {
   return (
     <div>
-      <Header />
+      <Header name="Илья Панарин" status="Клиент"/>
       <div className="flex justify-between">
         <div>
           <div className="flex items-center justify-between mt-[90px]">

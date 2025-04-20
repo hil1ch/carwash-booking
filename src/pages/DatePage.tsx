@@ -6,7 +6,7 @@ import { Calendar } from "../shared/ui/Calendar";
 export function DatePage() {
   return (
     <div>
-      <Header />
+      <Header name="Илья Панарин" status="Клиент"/>
       <div className="flex justify-between">
         <div className="">
           <div className="mr-45">

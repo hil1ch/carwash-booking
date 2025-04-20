@@ -1,7 +1,7 @@
-import { DatePage } from "../pages/DatePage";
+import { SlotsListPage } from "../pages/SlotsListPage";
 
 function App() {
-  return <DatePage />
+  return <SlotsListPage />
 }
 
 export default App;

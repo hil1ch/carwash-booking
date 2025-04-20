@@ -1,4 +1,6 @@
-export function Header() {
+import { IUser } from "./Avatar";
+
+export function Header({name, status}: IUser) {
   return (
     <div className="flex items-center mt-[20px] justify-between">
       <a href="#">
@@ -8,8 +10,8 @@ export function Header() {
         <a className="flex items-center" href="#">
           <img src="src\assets\user.png"></img>
           <div className="ml-[10px]">
-            <p className="text-[#000000]">Имя Фамилия</p>
-            <span className="text-[#ADADAD] text-[14px] font-medium">Клиент</span>
+            <p className="text-[#000000]">{name}</p>
+            <span className="text-[#ADADAD] text-[14px] font-medium">{status}</span>
           </div>
         </a>
       </div>
