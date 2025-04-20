@@ -1,7 +1,7 @@
-import { ProfilePage } from "../pages/ProfilePage";
+import { DatePage } from "../pages/DatePage";
 
 function App() {
-  return <ProfilePage />
+  return <DatePage />
 }
 
 export default App;
