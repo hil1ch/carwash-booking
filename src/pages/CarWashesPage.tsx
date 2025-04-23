@@ -1,4 +1,3 @@
-import { Header } from "../shared/ui/Header";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 // import { Map } from "../shared/ui/Map";
@@ -7,7 +6,7 @@ import { CarWashesList } from "../widgets/CarWashesList";
 export function CarWashesPage() {
   return (
     <div>
-      <Header />
+      {/*<Header  />  тут ошибкинс @Максим*/}
       <div className="">
         <div>
           <div className="flex items-center justify-between mt-[90px]">
