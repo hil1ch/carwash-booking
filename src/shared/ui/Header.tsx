@@ -1,4 +1,6 @@
 import { IUser } from "./Avatar";
+import userImage from './../../assets/user.png'; 
+import exitSvg from './../../assets/exit.svg';
 
 export function Header({name, status}: IUser) {
   return (
@@ -8,7 +10,7 @@ export function Header({name, status}: IUser) {
       </a>
       <div className="flex items-center">
         <a className="flex items-center" href="#">
-          <img src="src\assets\user.png"></img>
+          <img src={userImage}></img>
           <div className="ml-[10px]">
             <p className="text-[#000000]">{name}</p>
             <span className="text-[#ADADAD] text-[14px] font-medium">{status}</span>
@@ -16,7 +18,7 @@ export function Header({name, status}: IUser) {
         </a>
       </div>
       <button type="button" className="cursor-pointer">
-         <img src="src\assets\exit.svg"></img>
+         <img src={exitSvg}></img>
       </button>
    </div>
   );
