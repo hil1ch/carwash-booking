@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   deploy:
@@ -23,7 +24,7 @@ jobs:
       - name: Deploy via SSH
         run: |
           ssh ${{ secrets.LOGIN }}@${{ secrets.HOST }} << 'EOF'
-            cd /opt/car-washes-web
+            cd /opt/carwash-booking
             git pull
             docker-compose down
             docker-compose up -d --build
