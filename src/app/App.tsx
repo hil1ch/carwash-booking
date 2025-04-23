@@ -1,7 +1,7 @@
-import { SlotsListPage } from "../pages/SlotsListPage";
+import { ProfilePage } from "../pages/ProfilePage";
 
 function App() {
-  return <SlotsListPage />
+  return <ProfilePage />
 }
 
 export default App;

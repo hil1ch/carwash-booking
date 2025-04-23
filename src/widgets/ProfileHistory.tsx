@@ -1,9 +1,10 @@
 import { Table } from "antd";
 import type { TableColumnsType } from "antd";
 import { createStyles } from "antd-style";
+import { IExtendedToken } from "./SlotsList";
 
 const useStyle = createStyles(({ css, token }) => {
-  const { antCls } = token;
+  const { antCls } = token as IExtendedToken;
   return {
     customTable: css`
       ${antCls}-table {

@@ -1,9 +1,14 @@
 import { Table, Button, Space } from "antd";
 import type { TableColumnsType } from "antd";
 import { createStyles } from "antd-style";
+import type { GlobalToken } from 'antd/es/theme/interface';
+
+export interface IExtendedToken extends GlobalToken {
+  antCls: string;
+}
 
 const useStyle = createStyles(({ css, token }) => {
-  const { antCls } = token;
+  const { antCls } = token as IExtendedToken;
   return {
     customTable: css`
       ${antCls}-table {
