@@ -11,6 +11,7 @@ export function CarWashesPage() {
   return (
     <div>
       <Header name="Илья Панарин" status="Клиент" />
+      {/*<Header  />  тут ошибкинс @Максим*/}
       <div className="">
         <div>
           <div className="flex items-center justify-between mt-[90px]">
