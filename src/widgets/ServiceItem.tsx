@@ -1,8 +1,11 @@
 export interface IService {
+  id?: number;
   name: string;
   description: string;
   time: string;
   price: string;
+  className?: string;
+  onClick?: () => void;
 }
 
 export function ServiceItem({ name, description, time, price }: IService) {

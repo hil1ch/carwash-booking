@@ -1,7 +1,7 @@
-import { ProfilePage } from "../pages/ProfilePage";
+import { CarWashesPage } from "../pages/CarWashesPage";
 
 function App() {
-  return <ProfilePage />
+  return <CarWashesPage />
 }
 
 export default App;
