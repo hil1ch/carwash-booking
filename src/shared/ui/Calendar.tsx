@@ -1,13 +1,33 @@
-// import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export function Calendar() {
-  // const [startDate, setStartDate] = useState(new Date());
+interface ICalendarProps {
+  onDateChange: (date: Date | null) => void;
+  selectedDate: Date | null;
+  minDate?: Date;
+}
+
+export function Calendar({onDateChange, selectedDate, minDate}: ICalendarProps) {
   return (
     <DatePicker
-      // selected={startDate}
-      // onChange={(date) => setStartDate(date)}
+      selected={selectedDate}
+      onChange={onDateChange}
+      minDate={minDate}
+      filterTime={(time: Date) => {
+        // Если выбрана сегодняшняя дата, фильтруем прошедшее время
+        if (minDate && selectedDate) {
+          const selectedDateStart = new Date(selectedDate);
+          selectedDateStart.setHours(0, 0, 0, 0);
+          
+          const minDateStart = new Date(minDate);
+          minDateStart.setHours(0, 0, 0, 0);
+          
+          if (selectedDateStart.getTime() === minDateStart.getTime()) {
+            return time >= minDate;
+          }
+        }
+        return true;
+      }}
       locale="ru"
       showTimeSelect
       timeFormat="HH:mm"

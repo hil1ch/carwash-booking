@@ -1,7 +1,7 @@
-import { ServicesPage } from "../pages/ServicesPage";
+import { DatePage } from "../pages/DatePage";
 
 function App() {
-  return <ServicesPage />
+  return <DatePage />
 }
 
 export default App;
