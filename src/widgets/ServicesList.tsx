@@ -1,32 +1,27 @@
 import { ServiceItem } from "./ServiceItem";
+import { SERVICES } from "../shared/constants/ServicesData";
 
-export function ServicesList() {
+interface IServicesListProps {
+  selectedService: number | null;
+  onSelectedService: (id: number | null) => void;
+}
+
+export function ServicesList({selectedService, onSelectedService}: IServicesListProps) {
   return (
     <ul>
-      <ServiceItem
-        name="Название услуги"
-        description="Описание услуги"
-        time="9:00 - 10:00"
-        price="500р"
-      />
-      <ServiceItem
-        name="Название услуги"
-        description="Описание услуги"
-        time="9:00 - 10:00"
-        price="400р"
-      />
-      <ServiceItem
-        name="Название услуги"
-        description="Описание услуги"
-        time="9:00 - 10:00"
-        price="300р"
-      />
-      <ServiceItem
-        name="Название услуги"
-        description="Описание услуги"
-        time="9:00 - 10:00"
-        price="300р"
-      />
+      {SERVICES?.map((service) => (
+        <ServiceItem 
+          key={service.id}
+          name={service.name}
+          description={service.description}
+          time={service.time}
+          price={service.price}
+          className={`transition-all ${
+            selectedService === service.id ? "bg-[#E1E5E9] ring-2 ring-[#9AA5B0]" : ""
+          }`}
+          onClick={() => onSelectedService(service.id)}
+        />
+      ))}
     </ul>
   );
 }

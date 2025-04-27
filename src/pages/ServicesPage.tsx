@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { Header } from "../shared/ui/Header";
 import { ServicesList } from "../widgets/ServicesList";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
+import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
 
 export function ServicesPage() {
+  const [selectedService, setSelectedService] = useState<number | null>(null);
+
   return (
     <div>
-      <Header name="Илья Панарин" status="Клиент"/>
+      <Header name="Илья Панарин" status="Клиент" />
       <div className="flex justify-between">
         <div>
           <div className="flex items-center justify-between mt-[90px]">
@@ -16,14 +20,20 @@ export function ServicesPage() {
             </h2>
             <Search placeholder="Найти услугу" />
           </div>
-          <ServicesList />
+          <ServicesList
+            selectedService={selectedService}
+            onSelectedService={setSelectedService}
+          />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
-          <FinalChooseBlock/>
+          <FinalChooseBlock />
           <Button
             type="button"
-            className="w-full mt-[17px] text-[16px] text-white font-medium p-[16px] bg-[#2E4156] border-none rounded-[15px] cursor-pointer hover:bg-[#0F1E2E]"
-            disabled={false}
+            className={`w-full mt-[17px] text-[16px] font-medium p-[16px]  border-none rounded-[15px] cursor-pointer"
+           ${
+             !selectedService ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`
+           }`}
+            disabled={!selectedService}
           >
             Продолжить
           </Button>
