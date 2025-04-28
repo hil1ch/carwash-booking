@@ -67,7 +67,7 @@ export function FinalChooseBlock({carNumber, onCarNumberChange}: IFinalChooseBlo
       <ChooseServiceItem
         name="Название услуги"
         description="Описание услуги"
-        time="9:00 - 10:00"
+        time="1 час"
         price="300р"
       />
       <div className="pl-[22px] pr-[22px] mt-auto">
