@@ -1,5 +1,6 @@
 import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
+import { Link } from "react-router-dom";
 
 export function PartnerSignInPage() {
   return (
@@ -23,7 +24,7 @@ export function PartnerSignInPage() {
             type="password"
             placeholder="Введите пароль"
           ></Input>
-          <a className="text-end mt-[5px] text-[14px]" href="#">
+          <a className="text-end mt-[5px] text-[14px] text-[#646cff] hover:text-[#4e53ac]" href="#">
             Забыли пароль?
           </a>
           <Button
@@ -35,9 +36,9 @@ export function PartnerSignInPage() {
           </Button>
           <p className="mt-[12px] text-[14px] text-center">
             Нет аккаунта?{" "}
-            <a href="#" className="ml-[4px]">
+            <Link to="/partnerRegister" className="ml-[4px] text-[#646cff] hover:text-[#4e53ac]">
               Написать администратору
-            </a>
+            </Link>
           </p>
         </div>
       </form>

@@ -1,5 +1,6 @@
 import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
+import { Link } from "react-router-dom";
 
 export function ClientSignInPage() {
   return (
@@ -23,7 +24,7 @@ export function ClientSignInPage() {
             type="password"
             placeholder="Введите пароль"
           ></Input>
-          <a className="text-end mt-[5px] text-[14px]" href="#">
+          <a className="text-end mt-[5px] text-[14px] text-[#646cff] hover:text-[#4e53ac]" href="#">
             Забыли пароль?
           </a>
           <Button
@@ -35,9 +36,9 @@ export function ClientSignInPage() {
           </Button>
           <p className="mt-[12px] text-[14px] text-center">
             Нет аккаунта?{" "}
-            <a href="#" className="ml-[4px]">
+            <Link to="/clientRegister" className="ml-[4px] text-[#646cff] hover:text-[#4e53ac]">
               Зарегистрироваться
-            </a>
+            </Link>
           </p>
         </div>
       </form>
@@ -46,7 +47,7 @@ export function ClientSignInPage() {
          <span className="text-[#CCCCCC] p-[8px] font-medium">ИЛИ</span>
          <div className="w-[253px] h-[2px] bg-[#D4D4D4]"></div>
       </div>
-      <a href="#" className="flex mt-[12px] justify-center border border-[#D5D5D5] rounded-[15px] w-[190px] p-[12px] items-center">Продолжить с <img className="ml-[10px]" src="src\assets\vk.png"></img></a>
+      <a href="#" className="flex mt-[12px] justify-center border border-[#D5D5D5] rounded-[15px] w-[190px] p-[12px] items-center hover:bg-[#f6f7ff]">Продолжить с <img className="ml-[10px]" src="src\assets\vk.png"></img></a>
     </div>
   );
 }

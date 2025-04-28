@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
@@ -7,11 +8,17 @@ import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/Button
 
 export function CarWashesPage() {
   const [selectedCarWash, setSelectedCarWash] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  const handleContinueToService = () => {
+    if (selectedCarWash) {
+      navigate("/services", {state: {carwash: selectedCarWash}})
+    }
+  }
 
   return (
     <div>
       <Header name="Илья Панарин" status="Клиент" />
-      {/*<Header  />  тут ошибкинс @Максим*/}
       <div className="">
         <div>
           <div className="flex items-center justify-between mt-[90px]">
@@ -35,6 +42,7 @@ export function CarWashesPage() {
         : `${BUTTON_AVAILABLE}`
     }`}
         disabled={!selectedCarWash}
+        onClick={handleContinueToService}
       >
         Продолжить
       </Button>

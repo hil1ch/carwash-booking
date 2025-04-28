@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { ServicesList } from "../widgets/ServicesList";
 import { Search } from "../shared/ui/Search";
@@ -8,6 +9,13 @@ import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/Button
 
 export function ServicesPage() {
   const [selectedService, setSelectedService] = useState<number | null>(null);
+  const navigate = useNavigate();
+
+  const handleContinueToDate = () => {
+    if (selectedService) {
+      navigate("/date", {state: {service: selectedService}})
+    }
+  }
 
   return (
     <div>
@@ -34,6 +42,7 @@ export function ServicesPage() {
              !selectedService ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`
            }`}
             disabled={!selectedService}
+            onClick={handleContinueToDate}
           >
             Продолжить
           </Button>

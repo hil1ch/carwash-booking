@@ -1,4 +1,4 @@
-import { Button } from "../shared/ui/Button";
+import { Link } from "react-router-dom";
 
 export function StartPage() {
   const buttonStyle =
@@ -13,12 +13,12 @@ export function StartPage() {
         Быстрая запись — безупречный блеск!
       </p>
       <div className="flex gap-8 justify-center">
-        <Button type="button" className={buttonStyle} disabled={false}>
+        <Link type="button" className={buttonStyle} to="/clientLogin">
           Для клиентов
-        </Button>
-        <Button type="button" className={buttonStyle} disabled={false}>
+        </Link>
+        <Link type="button" className={buttonStyle} to="/partnerLogin">
           Для владельцев
-        </Button>
+        </Link>
       </div>
     </div>
   );

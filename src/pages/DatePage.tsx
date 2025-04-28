@@ -3,14 +3,24 @@ import { Header } from "../shared/ui/Header";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { Button } from "../shared/ui/Button";
 import { Calendar } from "../shared/ui/Calendar";
-import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
+import {
+  BUTTON_AVAILABLE,
+  BUTTON_UNAVAILABLE,
+} from "../shared/constants/ButtonStyles";
 
 export function DatePage() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [carNumber, setCarNumber] = useState("");
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
   };
+
+  const handleCarNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCarNumber(e.target.value);
+  };
+
+  const isFormValid = selectedDate && carNumber.trim().length === 11;
 
   return (
     <div>
@@ -29,14 +39,15 @@ export function DatePage() {
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
-          <FinalChooseBlock />
+          <FinalChooseBlock
+            carNumber={carNumber}
+            onCarNumberChange={handleCarNumberChange}
+          />
           <Button
             type="button"
             className={`w-full mt-[17px] text-[16px] font-medium p-[16px]  border-none rounded-[15px] cursor-pointer"
-           ${
-             !selectedDate ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`
-           }`}
-            disabled={!selectedDate}
+           ${!isFormValid ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`}`}
+            disabled={!isFormValid}
           >
             Забронировать
           </Button>

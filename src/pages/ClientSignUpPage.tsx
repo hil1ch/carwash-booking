@@ -1,6 +1,7 @@
 import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 import { useMask } from "@react-input/mask"
+import { Link } from "react-router-dom";
 
 export function ClientSignUpPage() {
 
@@ -78,9 +79,9 @@ export function ClientSignUpPage() {
           </Button>
           <p className="mt-[12px] text-[14px] text-center">
             Есть аккаунт?{" "}
-            <a href="#" className="ml-[4px]">
+            <Link to="/clientLogin" className="ml-[4px] text-[#646cff] hover:text-[#4e53ac]">
               Войти
-            </a>
+            </Link>
           </p>
         </div>
       </form>
