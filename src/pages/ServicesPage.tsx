@@ -16,10 +16,10 @@ export function ServicesPage() {
   const selectedCarWash = CARWASHES.find(wash => wash.id === Number(carWashId));
 
   const handleContinueToDate = () => {
-    if (selectedService) {
-      navigate(`/date/${selectedService}`)
+    if (selectedService && carWashId) {
+      navigate(`/date/${carWashId}/${selectedService}`);
     }
-  }
+  };
 
   return (
     <div>

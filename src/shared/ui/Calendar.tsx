@@ -28,7 +28,6 @@ export function Calendar({onDateChange, selectedDate, minDate}: ICalendarProps) 
         }
         return true;
       }}
-      locale="ru"
       showTimeSelect
       timeFormat="HH:mm"
       timeIntervals={60}

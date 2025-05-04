@@ -21,7 +21,7 @@ function App() {
         <Route path="partnerRegister" element={<PartnerSignUpPage />}/>
         <Route path="carWashes" element={<CarWashesPage />}/>
         <Route path="services/:carWashId" element={<ServicesPage />}/>
-        <Route path="date/:serviceId" element={<DatePage />}/>
+        <Route path="date/:carWashId/:serviceId" element={<DatePage />} />
         <Route path="profile" element={<ProfilePage />}/>
         <Route path="slots" element={<SlotsListPage />}/>
       </Routes>
