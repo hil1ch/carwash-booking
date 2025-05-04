@@ -2,9 +2,11 @@ import { ChooseCarWashItem } from "./ChooseCarWashItem";
 import { ChooseServiceItem } from "./ChooseServiceItem";
 import { useState } from "react";
 import { ICarWash } from "./CarWash";
+import { IService } from "./ServiceItem";
 
 interface IFinalChooseBlockProps {
   carWash?: ICarWash;
+  service?: IService;
   carNumber?: string;
   onCarNumberChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -13,6 +15,7 @@ export function FinalChooseBlock({
   carNumber,
   onCarNumberChange,
   carWash,
+  service,
 }: IFinalChooseBlockProps) {
   const [localCarNumber, setLocalCarNumber] = useState(carNumber || "");
 
@@ -27,7 +30,7 @@ export function FinalChooseBlock({
 
     // Форматируем по шаблону _-___-__
     let formattedValue = "";
-
+    
     if (cleanValue.length > 0) {
       formattedValue += cleanValue[0];
     }
@@ -75,22 +78,26 @@ export function FinalChooseBlock({
         />
       )}
       <div className="border border-[#E5E5E5]"></div>
-      <ChooseServiceItem
-        name="Название услуги"
-        description="Описание услуги"
-        time="1 час"
-        price="300р"
-      />
-      <div className="pl-[22px] pr-[22px] mt-auto">
-        <input
-          className="w-full p-[16px] border border-[#E5E5E5] rounded-[15px] placeholder:font-medium"
-          type="text"
-          placeholder="A 123 БВ 45"
-          value={localCarNumber}
-          onChange={handleCarNumberChange}
-          required
-        />
-      </div>
+      {service && (
+        <>
+          <ChooseServiceItem
+            name={service.name}
+            description={service.description}
+            time={service.time}
+            price={service.price}
+          />
+          <div className="pl-[22px] pr-[22px] mt-auto">
+            <input
+              className="w-full p-[16px] border border-[#E5E5E5] rounded-[15px] placeholder:font-medium"
+              type="text"
+              placeholder="A 123 БВ 45"
+              value={localCarNumber}
+              onChange={handleCarNumberChange}
+              required
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

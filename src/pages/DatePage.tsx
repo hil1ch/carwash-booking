@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { Button } from "../shared/ui/Button";
@@ -7,10 +8,14 @@ import {
   BUTTON_AVAILABLE,
   BUTTON_UNAVAILABLE,
 } from "../shared/constants/ButtonStyles";
+import { SERVICES } from "../shared/constants/ServicesData";
 
 export function DatePage() {
+  const { serviceId } = useParams<{ serviceId: string }>();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [carNumber, setCarNumber] = useState("");
+
+  const selectedService = SERVICES.find(serv => serv.id === Number(serviceId));
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -42,6 +47,7 @@ export function DatePage() {
           <FinalChooseBlock
             carNumber={carNumber}
             onCarNumberChange={handleCarNumberChange}
+            service={selectedService}
           />
           <Button
             type="button"

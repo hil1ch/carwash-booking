@@ -17,7 +17,7 @@ export function ServicesPage() {
 
   const handleContinueToDate = () => {
     if (selectedService) {
-      navigate("/date", {state: {service: selectedService}})
+      navigate(`/date/${selectedService}`)
     }
   }
 
