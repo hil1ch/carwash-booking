@@ -1,4 +1,6 @@
 import { ICarWash } from "./CarWash";
+import geoImg from '../assets/geo.svg';
+import timeImg from '../assets/time.svg';
 
 export function ChooseCarWashItem({ name, address, time, image }: ICarWash) {
   return (
@@ -8,11 +10,11 @@ export function ChooseCarWashItem({ name, address, time, image }: ICarWash) {
         <h3 className="text-[16px] font-medium">{name}</h3>
         <div className="flex items-center justify-between w-full">
           <div className="flex">
-            <img className="mr-[5px]" src="src\assets\geo.svg" />
+            <img className="mr-[5px]" src={geoImg} />
             <p className="text-[#7F7F7F] text-[14px]">{address}</p>
           </div>
           <div className="flex">
-            <img className="mr-[5px]" src="src\assets\time.svg"></img>
+            <img className="mr-[5px]" src={timeImg}></img>
             <span className="text-[#7F7F7F] text-[14px]">{time}</span>
           </div>
         </div>

@@ -1,3 +1,6 @@
+import descriptionImg from '../assets/description.svg';
+import timeImg from '../assets/time.svg';
+
 export interface IService {
   id?: number;
   name: string;
@@ -28,11 +31,11 @@ export function ServiceItem({
         </div>
         <div className="flex items-center justify-between w-full">
           <div className="flex pl-[19px]">
-            <img className="mr-[5px]" src="src\assets\description.svg" />
+            <img className="mr-[5px]" src={descriptionImg} />
             <p className="text-[#7F7F7F]">{description}</p>
           </div>
           <div className="flex">
-            <img className="mr-[5px]" src="src\assets\time.svg"></img>
+            <img className="mr-[5px]" src={timeImg}></img>
             <span className="text-[#7F7F7F]">{time}</span>
           </div>
         </div>

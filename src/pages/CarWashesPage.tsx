@@ -12,7 +12,7 @@ export function CarWashesPage() {
 
   const handleContinueToService = () => {
     if (selectedCarWash) {
-      navigate("/services", {state: {carwash: selectedCarWash}})
+      navigate(`/services/${selectedCarWash}`)
     }
   }
 

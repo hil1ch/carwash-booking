@@ -20,7 +20,7 @@ function App() {
         <Route path="partnerLogin" element={<PartnerSignInPage />}/>
         <Route path="partnerRegister" element={<PartnerSignUpPage />}/>
         <Route path="carWashes" element={<CarWashesPage />}/>
-        <Route path="services" element={<ServicesPage />}/>
+        <Route path="services/:carWashId" element={<ServicesPage />}/>
         <Route path="date" element={<DatePage />}/>
         <Route path="profile" element={<ProfilePage />}/>
         <Route path="slots" element={<SlotsListPage />}/>

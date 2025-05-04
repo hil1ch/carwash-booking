@@ -1,15 +1,19 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { ServicesList } from "../widgets/ServicesList";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
+import { CARWASHES } from "../shared/constants/CarWashesData";
 
 export function ServicesPage() {
+  const { carWashId } = useParams<{ carWashId: string }>();
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const navigate = useNavigate();
+
+  const selectedCarWash = CARWASHES.find(wash => wash.id === Number(carWashId));
 
   const handleContinueToDate = () => {
     if (selectedService) {
@@ -34,7 +38,7 @@ export function ServicesPage() {
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
-          <FinalChooseBlock />
+          <FinalChooseBlock carWash={selectedCarWash}/>
           <Button
             type="button"
             className={`w-full mt-[17px] text-[16px] font-medium p-[16px]  border-none rounded-[15px] cursor-pointer"
