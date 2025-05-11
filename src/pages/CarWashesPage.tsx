@@ -5,16 +5,23 @@ import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 import { CarWashesList } from "../widgets/CarWashesList";
 import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
+import { ICarWash } from "../widgets/CarWash";
 
 export function CarWashesPage() {
   const [selectedCarWash, setSelectedCarWash] = useState<number | null>(null);
+  const [carWashesData, setCarWashesData] = useState<ICarWash[]>([]);
   const navigate = useNavigate();
+
+  const handleCarWashesLoaded = (loadedCarWashes: ICarWash[]) => {
+    setCarWashesData(loadedCarWashes);
+  };
 
   const handleContinueToService = () => {
     if (selectedCarWash) {
-      navigate(`/services/${selectedCarWash}`)
+      // Передаем данные в следующую страницу
+      navigate(`/services/${selectedCarWash}`, { state: { carWashesData } });
     }
-  }
+  };
 
   return (
     <div>
@@ -30,17 +37,14 @@ export function CarWashesPage() {
           <CarWashesList
             selectedCarWash={selectedCarWash}
             onSelectedCarWash={setSelectedCarWash}
+            onCarWashesLoaded={handleCarWashesLoaded}
           />
         </div>
       </div>
       <Button
         type="button"
         className={`w-full mt-[17px] text-[16px] font-medium p-[16px] border-none rounded-[15px] cursor-pointer
-    ${
-      !selectedCarWash
-        ? `${BUTTON_UNAVAILABLE}`
-        : `${BUTTON_AVAILABLE}`
-    }`}
+          ${!selectedCarWash ? BUTTON_UNAVAILABLE : BUTTON_AVAILABLE}`}
         disabled={!selectedCarWash}
         onClick={handleContinueToService}
       >

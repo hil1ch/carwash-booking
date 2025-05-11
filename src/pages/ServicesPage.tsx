@@ -1,23 +1,31 @@
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { ServicesList } from "../widgets/ServicesList";
 import { Search } from "../shared/ui/Search";
 import { Button } from "../shared/ui/Button";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
-import { CARWASHES } from "../shared/constants/CarWashesData";
+import { ICarWash } from "../widgets/CarWash";
 
 export function ServicesPage() {
   const { carWashId } = useParams<{ carWashId: string }>();
   const [selectedService, setSelectedService] = useState<number | null>(null);
+  const location = useLocation();
   const navigate = useNavigate();
 
-  const selectedCarWash = CARWASHES.find(wash => wash.id === Number(carWashId));
+  // Получаем список автомоек из состояния навигации
+  const carWashesData = location.state?.carWashesData as ICarWash[] | undefined;
+  const selectedCarWash = carWashesData?.find(wash => wash.id === Number(carWashId));
 
   const handleContinueToDate = () => {
     if (selectedService && carWashId) {
-      navigate(`/date/${carWashId}/${selectedService}`);
+      navigate(`/date/${carWashId}/${selectedService}`, { 
+        state: { 
+          carWashesData,
+          selectedCarWash 
+        } 
+      });
     }
   };
 
@@ -38,13 +46,13 @@ export function ServicesPage() {
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
-          <FinalChooseBlock carWash={selectedCarWash}/>
+          {selectedCarWash && (
+            <FinalChooseBlock carWash={selectedCarWash}/>
+          )}
           <Button
             type="button"
-            className={`w-full mt-[17px] text-[16px] font-medium p-[16px]  border-none rounded-[15px] cursor-pointer"
-           ${
-             !selectedService ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`
-           }`}
+            className={`w-full mt-[17px] text-[16px] font-medium p-[16px] border-none rounded-[15px] cursor-pointer
+              ${!selectedService ? BUTTON_UNAVAILABLE : BUTTON_AVAILABLE}`}
             disabled={!selectedService}
             onClick={handleContinueToDate}
           >
