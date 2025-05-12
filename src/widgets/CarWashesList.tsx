@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CarWash } from "./CarWash";
 import { CARWASHES } from "../shared/constants/CarWashesData";
 import { ICarWash } from "./CarWash";
+import defaultCarWashImage from '../assets/carwash.png';
 
 interface ICarWashesListProps {
   selectedCarWash: number | null;
@@ -25,10 +26,15 @@ export function CarWashesList({
         return res.json();
       })
       .then(data => {
-        setCarwashesList(data);
+        // Add default image if API doesn't provide one
+        const carWashesWithImages = data.map((carWash: ICarWash) => ({
+          ...carWash,
+          image: carWash.image || defaultCarWashImage
+        }));
+        setCarwashesList(carWashesWithImages);
         setIsLoading(false);
         // Вызываем callback с загруженными данными
-        if (onCarWashesLoaded) onCarWashesLoaded(data);
+        if (onCarWashesLoaded) onCarWashesLoaded(carWashesWithImages);
       })
       .catch(error => {
         setError(error.message);

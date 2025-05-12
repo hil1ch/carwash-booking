@@ -7,7 +7,7 @@ export function ChooseCarWashItem({ name, address, time, image }: ICarWash) {
     <div className="p-6 flex pt-[30px]">
       <img className="mr-[15px] w-[110px]" src={image}></img>
       <div className="flex flex-col justify-between pt-[10px] pb-[10px] w-full">
-        <h3 className="text-[16px] font-medium">{name}</h3>
+        <h3 className="text-[16px] font-medium overflow-hidden text-ellipsis whitespace-nowrap max-w-[230px]">{name}</h3>
         <div className="flex items-center justify-between w-full">
           <div className="flex">
             <img className="mr-[5px]" src={geoImg} />

@@ -7,10 +7,12 @@ import { Button } from "../shared/ui/Button";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/ButtonStyles";
 import { ICarWash } from "../widgets/CarWash";
+import { IService } from "../widgets/ServiceItem";
 
 export function ServicesPage() {
   const { carWashId } = useParams<{ carWashId: string }>();
-  const [selectedService, setSelectedService] = useState<number | null>(null);
+  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
+  const [selectedServiceData, setSelectedServiceData] = useState<IService | undefined>(undefined);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -18,16 +20,26 @@ export function ServicesPage() {
   const carWashesData = location.state?.carWashesData as ICarWash[] | undefined;
   const selectedCarWash = carWashesData?.find(wash => wash.id === Number(carWashId));
 
+  const handleServiceSelect = (serviceId: number | null, serviceData: IService | null) => {
+    setSelectedServiceId(serviceId);
+    setSelectedServiceData(serviceData || undefined);
+  };
+
   const handleContinueToDate = () => {
-    if (selectedService && carWashId) {
-      navigate(`/date/${carWashId}/${selectedService}`, { 
+    if (selectedServiceId && carWashId && selectedServiceData) {
+      navigate(`/date/${carWashId}/${selectedServiceId}`, { 
         state: { 
           carWashesData,
-          selectedCarWash 
+          selectedCarWash,
+          selectedService: selectedServiceData
         } 
       });
     }
   };
+
+  if (!carWashId) {
+    return <div>Ошибка: ID автомойки не найден</div>;
+  }
 
   return (
     <div>
@@ -41,19 +53,22 @@ export function ServicesPage() {
             <Search placeholder="Найти услугу" />
           </div>
           <ServicesList
-            selectedService={selectedService}
-            onSelectedService={setSelectedService}
+            selectedService={selectedServiceId}
+            onSelectedService={handleServiceSelect}
+            carWashId={Number(carWashId)}
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
           {selectedCarWash && (
-            <FinalChooseBlock carWash={selectedCarWash}/>
+            <FinalChooseBlock 
+              carWash={selectedCarWash}
+            />
           )}
           <Button
             type="button"
             className={`w-full mt-[17px] text-[16px] font-medium p-[16px] border-none rounded-[15px] cursor-pointer
-              ${!selectedService ? BUTTON_UNAVAILABLE : BUTTON_AVAILABLE}`}
-            disabled={!selectedService}
+              ${!selectedServiceId ? BUTTON_UNAVAILABLE : BUTTON_AVAILABLE}`}
+            disabled={!selectedServiceId}
             onClick={handleContinueToDate}
           >
             Продолжить

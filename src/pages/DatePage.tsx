@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { FinalChooseBlock } from "../widgets/FinalChooseBlock";
 import { Button } from "../shared/ui/Button";
@@ -8,19 +8,24 @@ import {
   BUTTON_AVAILABLE,
   BUTTON_UNAVAILABLE,
 } from "../shared/constants/ButtonStyles";
-import { SERVICES } from "../shared/constants/ServicesData";
-import { CARWASHES } from "../shared/constants/CarWashesData";
+import { ICarWash } from "../widgets/CarWash";
+
+interface IService {
+  id: number;
+  name: string;
+  description: string;
+  time: string;
+  price: string;
+  carWashId: number;
+}
 
 export function DatePage() {
-  const { carWashId, serviceId } = useParams<{
-    carWashId: string;
-    serviceId: string;
-  }>();
+  const location = useLocation();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [carNumber, setCarNumber] = useState("");
 
-  const selectedCarWash = CARWASHES.find(wash => wash.id === Number(carWashId));
-  const selectedService = SERVICES.find(serv => serv.id === Number(serviceId));
+  const selectedCarWash = location.state?.selectedCarWash as ICarWash;
+  const selectedService = location.state?.selectedService as IService;
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
@@ -31,6 +36,10 @@ export function DatePage() {
   };
 
   const isFormValid = selectedDate && carNumber.trim().length === 11;
+
+  if (!selectedCarWash || !selectedService) {
+    return <div>Ошибка: Данные о выбранной автомойке или услуге не найдены</div>;
+  }
 
   return (
     <div>
@@ -57,8 +66,8 @@ export function DatePage() {
           />
           <Button
             type="button"
-            className={`w-full mt-[17px] text-[16px] font-medium p-[16px]  border-none rounded-[15px] cursor-pointer"
-           ${!isFormValid ? `${BUTTON_UNAVAILABLE}` : `${BUTTON_AVAILABLE}`}`}
+            className={`w-full mt-[17px] text-[16px] font-medium p-[16px] border-none rounded-[15px] cursor-pointer
+           ${!isFormValid ? BUTTON_UNAVAILABLE : BUTTON_AVAILABLE}`}
             disabled={!isFormValid}
           >
             Забронировать

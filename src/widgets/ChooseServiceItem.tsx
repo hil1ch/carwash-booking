@@ -11,7 +11,7 @@ export function ChooseServiceItem({
   return (
     <div className="p-6 flex flex-col justify-between pt-[15px] pb-[15px] w-full">
       <div className="flex items-center justify-between">
-        <h3 className="text-[16px] font-medium">{name}</h3>
+        <h3 className="text-[16px] font-medium text-ellipsis whitespace-nowrap max-w-[230px]">{name}</h3>
         <span className="text-[14px]">{price}</span>
       </div>
       <div className="flex items-center justify-between w-full mt-[15px]">

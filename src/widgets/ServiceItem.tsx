@@ -9,6 +9,7 @@ export interface IService {
   price: string;
   className?: string;
   onClick?: () => void;
+  carWashId?: number;
 }
 
 export function ServiceItem({

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { Search } from "../shared/ui/Search";
@@ -12,9 +12,9 @@ export function CarWashesPage() {
   const [carWashesData, setCarWashesData] = useState<ICarWash[]>([]);
   const navigate = useNavigate();
 
-  const handleCarWashesLoaded = (loadedCarWashes: ICarWash[]) => {
+  const handleCarWashesLoaded = useCallback((loadedCarWashes: ICarWash[]) => {
     setCarWashesData(loadedCarWashes);
-  };
+  }, []);
 
   const handleContinueToService = () => {
     if (selectedCarWash) {
