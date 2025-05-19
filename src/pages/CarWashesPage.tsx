@@ -8,7 +8,7 @@ import { BUTTON_AVAILABLE, BUTTON_UNAVAILABLE } from "../shared/constants/Button
 import { ICarWash } from "../widgets/CarWash";
 
 export function CarWashesPage() {
-  const [selectedCarWash, setSelectedCarWash] = useState<number | null>(null);
+  const [selectedCarWash, setSelectedCarWash] = useState<string | null>(null);
   const [carWashesData, setCarWashesData] = useState<ICarWash[]>([]);
   const navigate = useNavigate();
 

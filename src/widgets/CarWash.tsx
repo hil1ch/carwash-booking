@@ -1,10 +1,15 @@
 import { IService } from "./ServiceItem";
 
 export interface ICarWash {
-  id?: number;
+  carwashid?: string;
   name: string;
   address: string;
-  time: string;
+  latitude?: number;
+  longitude?: number;
+  openingtime?: string;
+  closingtime?: string;
+  windowsnumber?: number;
+  rate?: number;
   image: string;
   className?: string;
   onClick?: () => void;
@@ -12,7 +17,7 @@ export interface ICarWash {
   date?: Date;
 }
 
-export function CarWash({ name, address, time, image, className, onClick }: ICarWash) {
+export function CarWash({ name, address, openingtime, closingtime, image, className, onClick }: ICarWash) {
   return (
     <li 
       className={`w-full flex border border-[#DDDDDD] rounded-[10px] cursor-pointer shadow-[0_1px_7px_0_rgba(0,0,0,0.2)] mt-[17px] ${className}`}
@@ -28,7 +33,7 @@ export function CarWash({ name, address, time, image, className, onClick }: ICar
           </div>
           <div className="flex">
             <img className="mr-[5px]" src="src\assets\time.svg" alt="Время работы"></img>
-            <span className="text-[#7F7F7F]">{time}</span>
+            <span className="text-[#7F7F7F]">{openingtime} - {closingtime}</span>
           </div>
         </div>
       </div>

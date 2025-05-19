@@ -11,16 +11,16 @@ import { IService } from "../widgets/ServiceItem";
 
 export function ServicesPage() {
   const { carWashId } = useParams<{ carWashId: string }>();
-  const [selectedServiceId, setSelectedServiceId] = useState<number | null>(null);
+  const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [selectedServiceData, setSelectedServiceData] = useState<IService | undefined>(undefined);
   const location = useLocation();
   const navigate = useNavigate();
 
   // Получаем список автомоек из состояния навигации
   const carWashesData = location.state?.carWashesData as ICarWash[] | undefined;
-  const selectedCarWash = carWashesData?.find(wash => wash.id === Number(carWashId));
+  const selectedCarWash = carWashesData?.find(wash => wash.carwashid === carWashId);
 
-  const handleServiceSelect = (serviceId: number | null, serviceData: IService | null) => {
+  const handleServiceSelect = (serviceId: string | null, serviceData: IService | null) => {
     setSelectedServiceId(serviceId);
     setSelectedServiceData(serviceData || undefined);
   };
@@ -55,7 +55,7 @@ export function ServicesPage() {
           <ServicesList
             selectedService={selectedServiceId}
             onSelectedService={handleServiceSelect}
-            carWashId={Number(carWashId)}
+            carWashId={carWashId}
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">

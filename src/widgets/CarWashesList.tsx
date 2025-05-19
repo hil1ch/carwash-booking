@@ -5,8 +5,8 @@ import { ICarWash } from "./CarWash";
 import defaultCarWashImage from '../assets/carwash.png';
 
 interface ICarWashesListProps {
-  selectedCarWash: number | null;
-  onSelectedCarWash: (id: number | null) => void;
+  selectedCarWash: string | null;
+  onSelectedCarWash: (id: string | null) => void;
   onCarWashesLoaded?: (carWashes: ICarWash[]) => void;
 }
 
@@ -20,7 +20,7 @@ export function CarWashesList({
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('https://b6781a3024c0920c.mokky.dev/carWashes')
+    fetch('http://45.153.188.106:8000/carwashes/all')
       .then(res => {
         if (!res.ok) throw new Error('Ошибка сети');
         return res.json();
@@ -49,15 +49,16 @@ export function CarWashesList({
     <ul className="mt-[25px] overflow-y-scroll max-h-[500px]">
       {carWashesList?.map((carWash) => (
         <CarWash
-          key={carWash.id}
+          key={carWash.carwashid}
           name={carWash.name}
           address={carWash.address}
-          time={carWash.time}
+          openingtime={carWash.openingtime}
+          closingtime={carWash.closingtime}
           image={carWash.image}
           className={`transition-all ${
-            selectedCarWash === carWash.id ? "bg-[#E1E5E9] ring-2 ring-[#9AA5B0]" : ""
+            selectedCarWash === carWash.carwashid ? "bg-[#E1E5E9] ring-2 ring-[#9AA5B0]" : ""
           }`}
-          onClick={() => onSelectedCarWash(carWash.id!)}
+          onClick={() => onSelectedCarWash(carWash.carwashid!)}
         />
       ))}
     </ul>

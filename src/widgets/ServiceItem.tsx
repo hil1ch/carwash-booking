@@ -2,20 +2,20 @@ import descriptionImg from '../assets/description.svg';
 import timeImg from '../assets/time.svg';
 
 export interface IService {
-  id?: number;
+  serviceid?: string;
   name: string;
   description: string;
-  time: string;
-  price: string;
+  duration: number;
+  price?: string;
   className?: string;
   onClick?: () => void;
-  carWashId?: number;
+  carwashid?: string;
 }
 
 export function ServiceItem({
   name,
   description,
-  time,
+  duration,
   price,
   className,
   onClick,
@@ -37,7 +37,7 @@ export function ServiceItem({
           </div>
           <div className="flex">
             <img className="mr-[5px]" src={timeImg}></img>
-            <span className="text-[#7F7F7F]">{time}</span>
+            <span className="text-[#7F7F7F]">{duration}</span>
           </div>
         </div>
       </div>

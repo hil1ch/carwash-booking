@@ -3,9 +3,9 @@ import { ServiceItem, IService as IServiceItem } from "./ServiceItem";
 import { IService } from "./ServiceItem";
 
 interface IServicesListProps {
-  selectedService: number | null;
-  onSelectedService: (id: number | null, service: IServiceItem | null) => void;
-  carWashId: number;
+  selectedService: string | null;
+  onSelectedService: (id: string | null, service: IServiceItem | null) => void;
+  carWashId: string;
 }
 
 export function ServicesList({selectedService, onSelectedService, carWashId}: IServicesListProps) {
@@ -15,7 +15,7 @@ export function ServicesList({selectedService, onSelectedService, carWashId}: IS
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(`https://b6781a3024c0920c.mokky.dev/services?carWashId=${carWashId}`)
+    fetch(`http://45.153.188.106:8000/services/all?carWashId=${carWashId}`)
       .then(res => {
         if (!res.ok) throw new Error('Ошибка сети');
         return res.json();
@@ -31,17 +31,17 @@ export function ServicesList({selectedService, onSelectedService, carWashId}: IS
   }, [carWashId]);
 
   const handleServiceClick = (service: IService) => {
-    if (selectedService === service.id) {
+    if (selectedService === service.serviceid) {
       onSelectedService(null, null);
     } else {
       const serviceItem: IServiceItem = {
-        id: service.id,
+        serviceid: service.serviceid,
         name: service.name,
         description: service.description,
-        time: service.time,
-        price: service.price.toString()
+        duration: service.duration,
+        price: service.price
       };
-      onSelectedService(service.id!, serviceItem);
+      onSelectedService(service.serviceid!, serviceItem);
     }
   };
 
@@ -52,13 +52,13 @@ export function ServicesList({selectedService, onSelectedService, carWashId}: IS
     <ul className="mt-[25px] overflow-y-scroll max-h-[500px]">
       {!services.length ? 'Услуги в выбранной автомойке не найдены' : services.map((service) => (
         <ServiceItem 
-          key={service.id}
+          key={service.serviceid}
           name={service.name}
           description={service.description}
-          time={service.time}
-          price={service.price.toString()}
+          duration={service.duration}
+          price={service.price}
           className={`transition-all ${
-            selectedService === service.id ? "bg-[#E1E5E9] ring-2 ring-[#9AA5B0]" : ""
+            selectedService === service.serviceid ? "bg-[#E1E5E9] ring-2 ring-[#9AA5B0]" : ""
           }`}
           onClick={() => handleServiceClick(service)}
         />

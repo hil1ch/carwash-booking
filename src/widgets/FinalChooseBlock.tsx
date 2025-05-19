@@ -73,7 +73,8 @@ export function FinalChooseBlock({
         <ChooseCarWashItem
           name={carWash.name}
           address={carWash.address}
-          time={carWash.time}
+          openingtime={carWash.openingtime}
+          closingtime={carWash.closingtime}
           image={carWash.image}
         />
       )}
@@ -83,7 +84,7 @@ export function FinalChooseBlock({
           <ChooseServiceItem
             name={service.name}
             description={service.description}
-            time={service.time}
+            duration={service.duration}
             price={service.price}
           />
           <div className="pl-[22px] pr-[22px] mt-auto">

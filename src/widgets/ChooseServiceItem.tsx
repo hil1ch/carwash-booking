@@ -5,7 +5,7 @@ import timeImg from '../assets/time.svg';
 export function ChooseServiceItem({
   name,
   description,
-  time,
+  duration,
   price,
 }: IService) {
   return (
@@ -21,7 +21,7 @@ export function ChooseServiceItem({
         </div>
         <div className="flex">
           <img className="mr-[5px]" src={timeImg}></img>
-          <span className="text-[#7F7F7F] text-[14px]">{time}</span>
+          <span className="text-[#7F7F7F] text-[14px]">{duration}</span>
         </div>
       </div>
     </div>
