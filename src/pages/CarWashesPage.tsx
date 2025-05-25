@@ -10,10 +10,15 @@ import { ICarWash } from "../widgets/CarWash";
 export function CarWashesPage() {
   const [selectedCarWash, setSelectedCarWash] = useState<string | null>(null);
   const [carWashesData, setCarWashesData] = useState<ICarWash[]>([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
   const handleCarWashesLoaded = useCallback((loadedCarWashes: ICarWash[]) => {
     setCarWashesData(loadedCarWashes);
+  }, []);
+
+  const handleSearch = useCallback((query: string) => {
+    setSearchQuery(query);
   }, []);
 
   const handleContinueToService = () => {
@@ -32,12 +37,13 @@ export function CarWashesPage() {
             <h2 className="w-[250px] text-[18px] font-medium mr-[25px]">
               Выберите автомойку
             </h2>
-            <Search placeholder="Найти автомойку" />
+            <Search placeholder="Найти автомойку" onSearch={handleSearch} />
           </div>
           <CarWashesList
             selectedCarWash={selectedCarWash}
             onSelectedCarWash={setSelectedCarWash}
             onCarWashesLoaded={handleCarWashesLoaded}
+            searchQuery={searchQuery}
           />
         </div>
       </div>

@@ -22,7 +22,7 @@ export function ServiceItem({
 }: IService) {
   return (
     <li
-      className={`w-[730px] h-[98px] flex border border-[#DDDDDD] rounded-[10px] cursor-pointer shadow-[0_1px_7px_0_rgba(0,0,0,0.2)] mt-[17px] ${className}`}
+      className={`w-[650px] h-[98px] flex border border-[#DDDDDD] rounded-[10px] cursor-pointer shadow-[0_1px_7px_0_rgba(0,0,0,0.2)] mt-[17px] ${className}`}
       onClick={onClick}
     >
       <div className="flex flex-col justify-between pt-[15px] pb-[15px] w-full pr-[19px]">

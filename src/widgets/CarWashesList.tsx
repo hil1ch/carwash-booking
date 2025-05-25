@@ -8,39 +8,47 @@ interface ICarWashesListProps {
   selectedCarWash: string | null;
   onSelectedCarWash: (id: string | null) => void;
   onCarWashesLoaded?: (carWashes: ICarWash[]) => void;
+  searchQuery: string;
 }
 
 export function CarWashesList({
   selectedCarWash,
   onSelectedCarWash,
-  onCarWashesLoaded
+  onCarWashesLoaded,
+  searchQuery
 }: ICarWashesListProps) {
   const [carWashesList, setCarwashesList] = useState<ICarWash[]>(CARWASHES);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('http://45.153.188.106:8000/carwashes/all')
-      .then(res => {
-        if (!res.ok) throw new Error('Ошибка сети');
-        return res.json();
-      })
-      .then(data => {
-        // Add default image if API doesn't provide one
+    const fetchCarWashes = async () => {
+      setIsLoading(true);
+      try {
+        const endpoint = searchQuery 
+          ? `http://45.153.188.106:8000/carwashes/search?name=${encodeURIComponent(searchQuery)}`
+          : 'http://45.153.188.106:8000/carwashes/all';
+        
+        const response = await fetch(endpoint);
+        if (!response.ok) throw new Error('Ошибка сети');
+        
+        const data = await response.json();
         const carWashesWithImages = data.map((carWash: ICarWash) => ({
           ...carWash,
           image: carWash.image || defaultCarWashImage
         }));
+        
         setCarwashesList(carWashesWithImages);
-        setIsLoading(false);
-        // Вызываем callback с загруженными данными
         if (onCarWashesLoaded) onCarWashesLoaded(carWashesWithImages);
-      })
-      .catch(error => {
-        setError(error.message);
+      } catch (error) {
+        setError(error instanceof Error ? error.message : 'Произошла ошибка');
+      } finally {
         setIsLoading(false);
-      });
-  }, [onCarWashesLoaded]);
+      }
+    };
+
+    fetchCarWashes();
+  }, [searchQuery, onCarWashesLoaded]);
 
   if (isLoading) return <div>Загрузка автомоек...</div>;
   if (error) return <div>Ошибка: {error}</div>;

@@ -9,15 +9,7 @@ import {
   BUTTON_UNAVAILABLE,
 } from "../shared/constants/ButtonStyles";
 import { ICarWash } from "../widgets/CarWash";
-
-interface IService {
-  id: number;
-  name: string;
-  description: string;
-  time: string;
-  price: string;
-  carWashId: number;
-}
+import { IService } from "../widgets/ServiceItem";
 
 export function DatePage() {
   const location = useLocation();
