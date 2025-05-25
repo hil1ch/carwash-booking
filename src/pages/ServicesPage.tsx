@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { Header } from "../shared/ui/Header";
 import { ServicesList } from "../widgets/ServicesList";
@@ -13,6 +13,7 @@ export function ServicesPage() {
   const { carWashId } = useParams<{ carWashId: string }>();
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [selectedServiceData, setSelectedServiceData] = useState<IService | undefined>(undefined);
+  const [searchQuery, setSearchQuery] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -37,6 +38,10 @@ export function ServicesPage() {
     }
   };
 
+  const handleSearch = useCallback((query: string) => {
+      setSearchQuery(query);
+    }, []);
+
   if (!carWashId) {
     return <div>Ошибка: ID автомойки не найден</div>;
   }
@@ -50,12 +55,13 @@ export function ServicesPage() {
             <h2 className="w-[250px] text-[18px] font-medium mr-[25px]">
               Выберите услугу
             </h2>
-            <Search placeholder="Найти услугу" />
+            <Search placeholder="Найти услугу" onSearch={handleSearch}/>
           </div>
           <ServicesList
             selectedService={selectedServiceId}
             onSelectedService={handleServiceSelect}
             carWashId={carWashId}
+            searchQuery={searchQuery}
           />
         </div>
         <div className="w-full mt-[90px] ml-[35px]">
