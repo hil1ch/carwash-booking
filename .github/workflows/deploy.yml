@@ -13,19 +13,17 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Debug SSH setup
-        run: |
-          ls -la ~/.ssh/
-          cat ~/.ssh/id_rsa
-          ssh -vvv -i ~/.ssh/id_rsa ${{ secrets.LOGIN }}@${{ secrets.HOST }} "echo 'SSH connection successful'
-
       - name: Set up SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan ${{ secrets.HOST }} >> ~/.ssh/known_hosts
-
+      - name: Debug SSH setup
+        run: |
+          ls -la ~/.ssh/
+          cat ~/.ssh/id_rsa
+          ssh -vvv -i ~/.ssh/id_rsa ${{ secrets.LOGIN }}@${{ secrets.HOST }} "echo 'SSH connection successful'
       - name: Deploy via SSH
         run: |
           ssh ${{ secrets.LOGIN }}@${{ secrets.HOST }} << 'EOF'
