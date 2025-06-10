@@ -3,6 +3,7 @@ import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 import { useMask } from "@react-input/mask";
 import { Link } from "react-router-dom";
+import personImg from '../assets/explaining.svg'
 
 export function PartnerSignUpPage() {
   const [name, setName] = useState('');
@@ -21,7 +22,7 @@ export function PartnerSignUpPage() {
 
   return (
     <div className="flex justify-between text-center items-center min-h-screen mt-[25px] mb-[25px]">
-      <img src="src\assets\explaining.svg"></img>
+      <img src={personImg}></img>
       <form>
         <h1 className="text-[32px] font-medium">Регистрация</h1>
         <div className="flex flex-col mt-[50px] w-[566px]">

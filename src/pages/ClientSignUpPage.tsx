@@ -4,6 +4,7 @@ import { Button } from "../shared/ui/Button";
 import { useMask } from "@react-input/mask"
 import { Link } from "react-router-dom";
 import { useAuth } from "../processes/AuthContext";
+import carImg from '../assets/car.svg';
 
 export function ClientSignUpPage() {
   const [name, setName] = useState('');
@@ -38,7 +39,7 @@ export function ClientSignUpPage() {
 
   return (
     <div className="flex justify-between text-center items-center min-h-screen mt-[25px] mb-[25px]">
-      <img src="src\assets\car.svg"></img>
+      <img src={carImg}></img>
       <form onSubmit={handleSubmit}>
         <h1 className="text-[32px] font-medium">Регистрация</h1>
         <div className="flex flex-col mt-[50px] w-[566px]">

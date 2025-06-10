@@ -3,6 +3,7 @@ import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 import { Link } from "react-router-dom";
 import { useAuth } from "../processes/AuthContext";
+import vkImg from '../assets/vk.png';
 
 export function ClientSignInPage() {
   const [userPassword, setUserPassword] = useState("");
@@ -78,7 +79,7 @@ export function ClientSignInPage() {
         href="#"
         className="flex mt-[12px] justify-center border border-[#D5D5D5] rounded-[15px] w-[190px] p-[12px] items-center hover:bg-[#f6f7ff]"
       >
-        Продолжить с <img className="ml-[10px]" src="src\assets\vk.png"></img>
+        Продолжить с <img className="ml-[10px]" src={vkImg}></img>
       </a>
     </div>
   );
