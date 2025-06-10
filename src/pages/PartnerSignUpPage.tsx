@@ -1,9 +1,18 @@
+import { useState, ChangeEvent } from "react";
 import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 import { useMask } from "@react-input/mask";
 import { Link } from "react-router-dom";
 
 export function PartnerSignUpPage() {
+  const [name, setName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [partnerEmail, setPartnerEmail] = useState('');
+  const [address, setAddress] = useState('');
+  const [windows, setWindows] = useState('');
+  const [startTime, setStartTime] = useState('');
+  const [endTime, setEndTime] = useState('');
 
   const inputRef = useMask({
       mask: "+7 (___) ___-__-__",
@@ -25,6 +34,8 @@ export function PartnerSignUpPage() {
                 className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите ваше имя"
+                value={name}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
               ></Input>
             </div>
             <div className="flex flex-col w-[270px]">
@@ -35,6 +46,8 @@ export function PartnerSignUpPage() {
                 className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="text"
                 placeholder="Введите вашу фамилию"
+                value={lastName}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setLastName(e.target.value)}
               ></Input>
             </div>
           </div>
@@ -45,6 +58,8 @@ export function PartnerSignUpPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="email"
             placeholder="Введите вашу почту"
+            value={partnerEmail}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPartnerEmail(e.target.value)}
           ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Телефон
@@ -53,6 +68,8 @@ export function PartnerSignUpPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="tel"
             placeholder="+7 (___) ___-__-__" ref={inputRef}
+            value={phoneNumber}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}
           ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Адрес автомойки
@@ -61,6 +78,8 @@ export function PartnerSignUpPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="text"
             placeholder="Например: г. Еактеринбург, ул. Мира, д. 19"
+            value={address}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setAddress(e.target.value)}
           ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Количество окон
@@ -69,6 +88,8 @@ export function PartnerSignUpPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="number"
             placeholder="Например: 5"
+            value={windows}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setWindows(e.target.value)}
           ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Время работы
@@ -78,6 +99,8 @@ export function PartnerSignUpPage() {
               <Input
                 className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="time"
+                value={startTime}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setStartTime(e.target.value)}
               ></Input>
             </div>
             <span>—</span>
@@ -85,6 +108,8 @@ export function PartnerSignUpPage() {
               <Input
                 className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
                 type="time"
+                value={endTime}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setEndTime(e.target.value)}
               ></Input>
             </div>
           </div>

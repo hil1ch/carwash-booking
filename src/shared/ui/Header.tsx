@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { IUser } from "./Avatar";
 import userImage from "./../../assets/user.png";
 import exitSvg from "./../../assets/exit.svg";
+import { useAuth } from "../../processes/AuthContext";
 
 export function Header({ name, status }: IUser) {
+  const {logout} = useAuth();
+
   return (
     <div className="flex items-center mt-[20px] justify-between">
       <Link to="/carWashes">
@@ -18,7 +21,7 @@ export function Header({ name, status }: IUser) {
           </span>
         </div>
       </Link>
-      <button type="button" className="cursor-pointer">
+      <button type="button" className="cursor-pointer" onClick={logout}>
         <img src={exitSvg}></img>
       </button>
     </div>

@@ -1,8 +1,12 @@
+import { useState, ChangeEvent } from "react";
 import { Input } from "../shared/ui/Input";
 import { Button } from "../shared/ui/Button";
 import { Link } from "react-router-dom";
 
 export function PartnerSignInPage() {
+  const [partnerPassword, setPartnerPassword] = useState('');
+  const [partnerEmail, setPartnerEmail] = useState('');
+
   return (
     <div className="text-center flex flex-col items-center justify-center min-h-screen">
       <form>
@@ -15,6 +19,8 @@ export function PartnerSignInPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="text"
             placeholder="Введите ваш логин"
+            value={partnerEmail}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPartnerEmail(e.target.value)}
           ></Input>
           <label className="mt-[15px] text-[18px] font-medium text-[#CCCCCC] text-start">
             Пароль
@@ -23,6 +29,8 @@ export function PartnerSignInPage() {
             className="mt-[7px] text-[16px] text-medium border rounded-[15px] border-[#D5D5D5] p-[17px] placeholder:font-medium placeholder:text-[#CCCC] text-black font-medium"
             type="password"
             placeholder="Введите пароль"
+            value={partnerPassword}
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setPartnerPassword(e.target.value)}
           ></Input>
           <a className="text-end mt-[5px] text-[14px] text-[#646cff] hover:text-[#4e53ac]" href="#">
             Забыли пароль?
