@@ -149,7 +149,7 @@ export function AuthProvider({ children }: { children: ReactElement }) {
       }
     } catch (error) {
       console.error("Register error:", error);
-      // setErrors(["Network error during registration"]);
+      setErrors(["Ошибка сети или пользователь с таким аккаунтом уже существует"]);
     }
   };
 
@@ -172,7 +172,6 @@ export function AuthProvider({ children }: { children: ReactElement }) {
 
         localStorage.setItem("token", data.accessToken);
         localStorage.setItem("refreshToken", data.refreshToken);
-        localStorage.setItem('firstName', data.firstName)
 
         navigate("/carWashes");
       } else {
@@ -180,7 +179,7 @@ export function AuthProvider({ children }: { children: ReactElement }) {
       }
     } catch (error) {
       console.error("Login error:", error);
-      // setErrors(["Network error during login"]);
+      setErrors(["Ошибка сети или такого аккаунта не существует"]);
     }
   };
 

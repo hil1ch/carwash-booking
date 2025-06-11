@@ -9,7 +9,7 @@ export function ClientSignInPage() {
   const [userPassword, setUserPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
 
-  const { login } = useAuth();
+  const { login, errors } = useAuth();
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -21,6 +21,13 @@ export function ClientSignInPage() {
     <div className="text-center flex flex-col items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit}>
         <h1 className="text-[32px] font-medium">Вход</h1>
+        {errors.length > 0 && (
+          <div className="text-red-500">
+            {errors.map((error, index) => (
+              <p key={index}>{error}</p>
+            ))}
+          </div>
+        )}
         <div className="flex flex-col mt-[50px] w-[566px]">
           <label className="text-[18px] font-medium text-[#CCCCCC] text-start">
             Почта
